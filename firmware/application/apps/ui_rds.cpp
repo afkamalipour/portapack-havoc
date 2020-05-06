@@ -66,10 +66,10 @@ RDSPSNView::RDSPSNView(
 	button_set.on_select = [this, &nav](Button&) {
 		text_prompt(
 			nav,
-			&PSN,
+			PSN,
 			8,
-			[this](std::string* s) {
-				text_psn.set(*s);
+			[this](std::string& s) {
+				text_psn.set(s);
 			}
 		);
 	};
@@ -91,10 +91,10 @@ RDSRadioTextView::RDSRadioTextView(
 	button_set.on_select = [this, &nav](Button&){
 		text_prompt(
 			nav,
-			&radiotext,
+			radiotext,
 			28,
-			[this](std::string* s) {
-				text_radiotext.set(*s);
+			[this](std::string& s) {
+				text_radiotext.set(s);
 			}
 		);
 	};
@@ -204,7 +204,6 @@ void RDSView::start_tx() {
 		frame_datetime.clear();
 	
 	transmitter_model.set_sampling_rate(2280000U);
-	transmitter_model.set_rf_amp(true);
 	transmitter_model.set_baseband_bandwidth(1750000);
 	transmitter_model.enable();
 	

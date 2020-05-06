@@ -70,7 +70,7 @@ static msg_t ookthread_fn(void * arg) {
 }
 
 void MorseView::on_set_text(NavigationView& nav) {
-	text_prompt(nav, &buffer, 28);
+	text_prompt(nav, buffer, 28);
 }
 
 void MorseView::focus() {
@@ -100,7 +100,6 @@ bool MorseView::start_tx() {
 	progressbar.set_max(symbol_count);
 	
 	transmitter_model.set_sampling_rate(1536000U);
-	transmitter_model.set_rf_amp(true);
 	transmitter_model.set_baseband_bandwidth(1750000);
 	transmitter_model.enable();
 	
